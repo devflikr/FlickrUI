@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .all-center {
+        @apply justify-center items-center;
+    }
+
+    .round-button {
+        @apply w-10 h-10 rounded-full hover:bg-[#fff2] focus-within:bg-[#fff2] text-xl transition-all inline-flex all-center;
+    }
+}

@@ -1,0 +1,69 @@
+{
+    "name": "flikrui",
+    "version": "0.0.6",
+    "description": "A UI/UX package dedicated to enhance DevFlikr Apps.",
+    "main": "./dist/cjs/index.js",
+    "module": "./dist/esm/index.js",
+    "types": "./dist/esm/index.d.ts",
+    "typings": "./dist/esm/index.d.ts",
+    "type": "module",
+    "scripts": {
+        "prepublishOnly": "npm run compile",
+        "postpublish": "npm run clean",
+        "compile": "npm run clean && npm run compile:esm && npm run compile:cjs && npm run compile:css",
+        "compile:esm": "tsc",
+        "compile:cjs": "tsc --module commonjs --outDir dist/cjs",
+        "compile:css": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --minify",
+        "clean": "rimraf dist"
+    },
+    "files": [
+        "dist",
+        "LICENSE",
+        "package.json",
+        "README.md"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/devflikr/FlickrUI.git"
+    },
+    "keywords": [
+        "flikrui",
+        "devflikr",
+        "flikr-ui",
+        "devflikrui",
+        "devflikr-ui"
+    ],
+    "author": "DevFlikr",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/devflikr/FlickrUI/issues"
+    },
+    "devDependencies": {
+        "@tailwindcss/container-queries": "^0.1.1",
+        "@types/react": "^18.2.15",
+        "@types/uuid": "^9.0.7",
+        "autoprefixer": "^10.4.16",
+        "postcss": "^8.4.31",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "rimraf": "^5.0.1",
+        "tailwindcss": "^3.3.5",
+        "typescript": "^5.1.6"
+    },
+    "peerDependencies": {
+        "@tippyjs/react": "*",
+        "classnames": "*",
+        "devflikrauth": "*",
+        "framer-motion": "*",
+        "lucide-react": "*",
+        "react": "*",
+        "react-devflikrauth-hooks": "*",
+        "react-router-dom": "*",
+        "tailwind-merge": "*",
+        "uuid": "*"
+    },
+    "homepage": "https://github.com/devflikr/FlickrUI#readme",
+    "dependencies": {
+        "tslib": "^2.6.2"
+    }
+}
