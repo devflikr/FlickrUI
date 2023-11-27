@@ -1,6 +1,6 @@
 {
     "name": "flikrui",
-    "version": "0.0.6",
+    "version": "0.0.9",
     "description": "A UI/UX package dedicated to enhance DevFlikr Apps.",
     "main": "./dist/cjs/index.js",
     "module": "./dist/esm/index.js",
@@ -13,7 +13,10 @@
         "compile": "npm run clean && npm run compile:esm && npm run compile:cjs && npm run compile:css",
         "compile:esm": "tsc",
         "compile:cjs": "tsc --module commonjs --outDir dist/cjs",
-        "compile:css": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --minify",
+        "compile:css": "npm run compile:class && npm run compile:media && npm run compile:merge",
+        "compile:class": "tailwindcss -i ./src/styles.css -o ./dist/class-styled.css --minify --config ./tailwind.class.config.js",
+        "compile:media": "tailwindcss -i ./src/styles.css -o ./dist/media-styled.css --minify",
+        "compile:merge": "cat ./dist/class-styled.css ./dist/media-styled.css > ./dist/styles.css",
         "clean": "rimraf dist"
     },
     "files": [

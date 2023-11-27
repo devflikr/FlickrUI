@@ -1,7 +1,12 @@
-// import React from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import React, { useRef } from 'react';
+import React from 'react';
+
 import { X } from 'lucide-react';
+
+import { AnimatePresence, motion } from 'framer-motion';
+
+import { useAuthCurrentUser } from 'react-devflikrauth-hooks';
+
+import useHeaderApps from '../../hooks/useHeaderApps';
 
 export interface ExtendUserAppsProps {
     extend: boolean;
@@ -10,13 +15,14 @@ export interface ExtendUserAppsProps {
 
 function ExtendUserApps({ extend, setExtend }: ExtendUserAppsProps) {
 
+    const [user] = useAuthCurrentUser();
 
-    const ref = useRef<HTMLDivElement>(null);
+    const [apps] = useHeaderApps();
 
     return (
         <AnimatePresence>
             {extend && <motion.div
-                className="fixed sm:absolute inset-0 sm:inset-auto sm:top-20 sm:right-3 p-3 gap-4 h-full sm:h-auto sm:max-h-[calc(100dvh_-_96px)] bg-[#212121] shadow-[0_0_0_3px_#282828] w-full sm:w-[calc(100dvw_-_24px)] sm:max-w-sm z-20 sm:rounded-xl flex flex-col items-stretch"
+                className="flikrui-header-extended"
                 initial={{
                     opacity: 0,
                 }}
@@ -29,12 +35,17 @@ function ExtendUserApps({ extend, setExtend }: ExtendUserAppsProps) {
                 transition={{
                     duration: 0.2
                 }}
-                ref={ref}
             >
-                <header className="">
-                    <h2 className="">DevFlikr Apps</h2>
-                    <button type="button" className="round-button self-start ml-auto min-w-[40px]" onClick={() => setExtend?.(false)}><X size={20} absoluteStrokeWidth /></button>
+                <header className="flikrui-header-apps-header">
+                    <h2 className="flikrui-header-apps-header-title">DevFlikr Apps</h2>
+                    <button type="button" className="flikrui-header-extended-close" onClick={() => setExtend?.(false)}><X size={20} absoluteStrokeWidth /></button>
                 </header>
+                <div className="flikrui-header-apps-grid">
+                    {apps.map((app, index) => <a key={index} className="flikrui-header-apps-link" href={`${app.link}${user ? "?auth=" + user.index : ""}`} target={app.target || "_blank"} rel="noopener noreferrer">
+                        <img className="flikrui-header-apps-image" src={app.icon} alt={app.name} />
+                        <span className="flikrui-header-apps-text">{app.name}</span>
+                    </a>)}
+                </div>
             </motion.div>}
         </AnimatePresence>
     );

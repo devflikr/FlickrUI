@@ -1,24 +1,114 @@
-@tailwind base;
 @tailwind components;
-@tailwind utilities;
 
+@layer components {
 
-@layer utilities {
-
-    .no-scrollbar::-webkit-scrollbar {
+    .flikrui-no-scrollbar::-webkit-scrollbar {
         display: none;
     }
 
-    .no-scrollbar {
+    .flikrui-no-scrollbar {
         -ms-overflow-style: none;
         scrollbar-width: none;
     }
 
-    .all-center {
-        @apply justify-center items-center;
+    .flikrui-button-round {
+        @apply w-10 h-10 aspect-square rounded-full hover:bg-[#0001] dark:hover:bg-[#fff1] focus-within:bg-[#0001] dark:focus-within:bg-[#fff1] text-xl transition-all inline-flex justify-center items-center;
     }
 
-    .round-button {
-        @apply w-10 h-10 rounded-full hover:bg-[#fff2] focus-within:bg-[#fff2] text-xl transition-all inline-flex all-center;
+    .flikrui-header-avatar {
+        @apply rounded-full overflow-hidden w-16 h-10 flex flex-nowrap items-center justify-between focus-visible:bg-gray-200 hover:bg-gray-200 dark:focus-visible:bg-[#2F2E45] dark:hover:bg-[#2F2E45] transition-all p-1 text-lg;
+    }
+
+    .flikrui-header-avatar-expanded {
+        @apply bg-gray-200 dark:bg-[#2F2E45] shadow-[0_0_0_2px] shadow-gray-200 dark:shadow-[#fff4];
+    }
+
+    .flikrui-header-avatar-image {
+        @apply h-full rounded-full;
+    }
+
+    .flikrui-header-avatar-arrow {
+        @apply mr-0;
+    }
+
+    .flikrui-header-extended {
+        @apply fixed sm:absolute inset-0 sm:inset-auto sm:top-20 sm:right-3 p-3 gap-4 h-full sm:h-auto sm:max-h-[calc(100dvh_-_96px)] bg-[#F4F6FE] dark:bg-[#212121] shadow-[0_0_0_3px] shadow-gray-400 dark:shadow-[#282828] w-full sm:w-[calc(100dvw_-_24px)] sm:max-w-sm z-20 sm:rounded-xl flex flex-col items-stretch;
+    }
+
+    .flikrui-header-extended-profile {
+        @apply flex flex-nowrap items-center gap-3;
+    }
+
+    .flikrui-header-extended-profile-avatar {
+        @apply w-full min-w-[80px] max-w-[80px] aspect-square rounded-full overflow-hidden shadow-[0_0_0_2px] shadow-gray-200 dark:shadow-[#777];
+    }
+
+    .flikrui-header-extended-profile-name {
+        @apply font-bold;
+    }
+
+    .flikrui-header-extended-profile-email {
+        @apply text-gray-600 dark:text-gray-300;
+    }
+
+    .flikrui-header-extended-profile-username {
+        @apply text-xs font-bold text-gray-500 dark:text-gray-500;
+    }
+
+    .flikrui-header-extended-close {
+        @apply flikrui-button-round self-start ml-auto min-w-[40px];
+    }
+
+    .flikrui-header-extended-users {
+        @apply w-full overflow-auto flikrui-no-scrollbar sm:flex-1 relative rounded-xl;
+    }
+
+    .flikrui-header-extended-users-list {
+        @apply flex flex-col justify-center items-center;
+    }
+
+    .flikrui-header-extended-user {
+        @apply w-full px-5 py-3 first-of-type:rounded-t-xl last-of-type:rounded-b-xl bg-white dark:bg-[#111] hover:bg-blue-100 dark:hover:bg-[#32333c] focus-visible:bg-blue-100 dark:focus-visible:bg-[#32333c] transition-all hover:no-underline cursor-pointer border border-[#f4f6fe] hover:border-blue-200 dark:border-[#000] flex flex-wrap items-center gap-3;
+    }
+
+    .flikrui-header-extended-user-lead {
+        @apply leading-4;
+    }
+
+    .flikrui-header-extended-user-avatar {
+        @apply w-6 [&:has(>img)]:w-10 min-w-[24px] [&:has(>img)]:min-w-[40px] flex justify-center items-center aspect-square rounded-full overflow-hidden [&:has(>img)]:shadow-[0_0_0_3px] [&:has(>img)]:shadow-gray-400 dark:[&:has(>img)]:shadow-[#282828];
+    }
+
+
+    .flikrui-header-apps {
+        @apply flikrui-button-round;
+    }
+
+    .flikrui-header-apps-expanded {
+        @apply shadow-[0_0_0_2px] shadow-gray-200 dark:shadow-[#fff3] bg-[#fff1];
+    }
+
+    .flikrui-header-apps-header {
+        @apply flex flex-nowrap justify-between items-center;
+    }
+
+    .flikrui-header-apps-header-title {
+        @apply font-bold text-lg;
+    }
+
+    .flikrui-header-apps-grid {
+        @apply grid grid-cols-3 gap-2;
+    }
+
+    .flikrui-header-apps-image {
+        @apply w-full max-w-[50px];
+    }
+
+    .flikrui-header-apps-link {
+        @apply p-3 flex flex-col gap-2 items-center rounded-lg transition-all bg-white dark:bg-[#0002] hover:bg-blue-100 dark:hover:bg-[#fff1] focus-within:bg-blue-100 dark:focus-within:bg-[#fff1];
+    }
+
+    .flikrui-header-apps-text {
+        @apply w-full leading-4 line-clamp-2 text-center;
     }
 }

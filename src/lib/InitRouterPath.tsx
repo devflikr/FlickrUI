@@ -3,11 +3,11 @@ import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { setCurrentAuthIndex } from "devflikrauth";
 import { useAuthCurrentUser } from 'react-devflikrauth-hooks';
 
-export interface InitializeProps {
+export interface InitRouterPathProps {
     index?: number;
 }
 
-function Initialize({ index }: InitializeProps) {
+function InitRouterPath({ index }: InitRouterPathProps) {
     const [searchParams, setSearchParams] = useSearchParams();
     const navigate = useNavigate();
     const params = useParams();
@@ -54,4 +54,4 @@ function Initialize({ index }: InitializeProps) {
     return null;
 }
 
-export default Initialize;
+export default InitRouterPath;
