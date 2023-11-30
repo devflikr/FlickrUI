@@ -35,8 +35,10 @@ function useInitStorage(storage: "localStorage" | "sessionStorage" = "sessionSto
 
         if (authIndex >= sudoUsers.length) authIndex = 0;
 
-        setUser(sudoUsers[authIndex]);
-        setCurrentAuthIndex(authIndex);
+        setTimeout(() => {
+            setUser(sudoUsers[authIndex]);
+            setCurrentAuthIndex(authIndex);
+        }, 10);
 
         bucket.setItem(INTI_STORAGE_KEY, authIndex + "");
 

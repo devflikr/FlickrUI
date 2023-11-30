@@ -1,6 +1,6 @@
 {
     "name": "flikrui",
-    "version": "0.0.9",
+    "version": "0.0.10",
     "description": "A UI/UX package dedicated to enhance DevFlikr Apps.",
     "main": "./dist/cjs/index.js",
     "module": "./dist/esm/index.js",
